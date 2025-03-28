@@ -17,8 +17,6 @@
     name: expense
 
 - name: Include from common role
-  tags:
-  - deployment
 # include_role:
   ansible.builtin.include_role:
     name: common
