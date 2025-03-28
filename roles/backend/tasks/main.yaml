@@ -17,11 +17,13 @@
     name: expense
 
 - name: Include from common role
+  tags:
+  - deployment
 # include_role:
   ansible.builtin.include_role:
     name: common
     tasks_from: main
-    
+
 # - name: create /app directory
 #   ansible.builtin.file:
 #     path: /app
@@ -39,6 +41,8 @@
 #     remote_src: yes
 
 - name: install dependencies
+  tags:
+  - deployment
   community.general.npm:
     path: /app
 
@@ -68,6 +72,8 @@
     target: /app/schema/backend.sql
 
 - name: daemon reload and re-start service
+  tags:
+  - deployment
   ansible.builtin.systemd_service:
     enabled: true
     state: restarted
