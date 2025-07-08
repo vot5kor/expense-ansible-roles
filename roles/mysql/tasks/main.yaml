@@ -23,14 +23,14 @@
   community.mysql.mysql_info:
     login_user: root
     login_password: "{{ mysql_root_password }}"
-    login_host: mysql.tuktukride.online
+    login_host: "{{ login_host }}"
   register: mysql_info
   ignore_errors: true
 
     # login_password: "{{ mysql_root_password }}"
-- name: print the output
-  ansible.builtin.debug:
-    msg: "mysql info: {{ mysql_info }}"
+# - name: print the output
+#   ansible.builtin.debug:
+#     msg: "mysql info: {{ mysql_info }}"
 
 - name: setup root password
   ansible.builtin.command: " mysql_secure_installation --set-root-pass {{ mysql_root_password }} "
